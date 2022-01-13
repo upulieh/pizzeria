@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+# build/Release
+
+# Optional npm cache directory
+# .npm
+
+# Stores VSCode versions used for testing VSCode extensions
+# .vscode-test

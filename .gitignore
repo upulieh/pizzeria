@@ -1,3 +1,4 @@
+#  backend
 # Dependency directories
 node_modules/
 
@@ -17,3 +18,26 @@ node_modules/
 
 # Stores VSCode versions used for testing VSCode extensions
 # .vscode-test
+
+
+#  frontend
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+

@@ -6,7 +6,7 @@
   font-family: "Quicksand";
   color: #333;
 }
-/* .navbar {
+.navbar {
   padding: 20px;
   display: flex;
   align-items: center;
@@ -27,13 +27,12 @@
 }
 .navbar a:hover {
   color: #f1356d;
-} */
+}
 .content {
   max-width: 1024px;
   margin: 40px auto;
   padding: 20px;
 }
-
 /*list*/
 .pizza-preview {
   padding: 10px 16px;

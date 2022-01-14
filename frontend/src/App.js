@@ -3,9 +3,9 @@ import "./App.css";
 import { useState, useEffect } from "react"; //useState hook
 import Axios from "axios";
 
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-// import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar";
 
 const baseURL = "http://localhost:3001"; //move to .env
 
@@ -23,8 +23,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Navbar />
-      <Sidebar /> */}
+      <Navbar />
+      <Sidebar />
       <Home listOfPizzas={listOfPizzas} />
       <div>{/* <input type="text" placeholder="Name..."/> */}</div>
     </div>

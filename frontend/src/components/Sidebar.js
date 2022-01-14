@@ -9,7 +9,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div>
+    <div className="sidebar">
       <div>Total $. {total}</div>
       <button onClick={(e) => handleClick("M100", "10", e)}>Checkout</button>
     </div>

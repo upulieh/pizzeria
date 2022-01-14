@@ -3,6 +3,7 @@
 /* base styles */
 * {
   margin: 0;
+  padding: 0;
   font-family: "Quicksand";
   color: #333;
 }
@@ -30,20 +31,45 @@
 }
 .content {
   max-width: 1024px;
-  margin: 40px auto;
+  /* margin: 40px auto; */
   padding: 20px;
 }
-/*list*/
-.pizza-preview {
-  padding: 10px 16px;
-  margin: 20px 0;
-  border-bottom: 1px solid #fafafa;
+/* content */
+.content {
+  display: flex;
+  margin: 0 auto;
 }
-.pizza-preview:hover {
+/* home */
+.home {
+  background-color: rgb(100, 150, 164); /**/
+  width: 100%;
+  padding: 2rem;
+}
+/* pizza card*/
+.pizza {
+  padding: 10px 16px;
+  margin: 10px 10px;
+  background-color: rgb(150, 170, 174); /**/
+  display: inline-block;
+}
+.pizza:hover {
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
-.pizza-preview h2 {
+.pizza h2 {
   font-size: 20px;
   color: rgb(241, 53, 109);
   margin-bottom: 8px;
+}
+/* sidebar */
+.sidebar {
+  background-color: rgb(150, 170, 174); /**/
+}
+/* footer */
+.footer {
+  padding: 2rem 3rem;
+  background-color: rgb(235, 195, 64);
+  position: static;
+  bottom: 0;
+  left: 0;
+  /* width: 100%; */
 }

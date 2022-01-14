@@ -10,19 +10,12 @@ const Pizza = (props) => {
   };
 
   return (
-    <div>
-      <div className="pizza-preview" key={pizzaid}>
-        <h2>{pizzatype}</h2>
-        <h4>Small: {sprice}</h4>
-        <h4>Medium: {mprice}</h4>
-        <h4>Large: {lprice}</h4>
-      </div>
-
-      <div>
-        <button onClick={(e) => handleClick("M100", "10", e)}>
-          Add to cart
-        </button>
-      </div>
+    <div className="pizza" key={pizzaid}>
+      <h2>{pizzatype}</h2>
+      <h4>Small: {sprice}</h4>
+      <h4>Medium: {mprice}</h4>
+      <h4>Large: {lprice}</h4>
+      <button onClick={(e) => handleClick("M100", "10", e)}>Add to cart</button>
     </div>
   );
 };

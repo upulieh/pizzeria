@@ -4,8 +4,8 @@ import Axios from "axios";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
+import Content from "./components/Content";
 
 const baseURL = "http://localhost:3001"; //move to .env
 
@@ -24,7 +24,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 20);
   }, []);
 
   return (
@@ -37,9 +37,8 @@ function App() {
       ) : (
         <>
           <Navbar />
-          <Sidebar />
-          <Home listOfPizzas={listOfPizzas} />
-          <div>{/* <input type="text" placeholder="Name..."/> */}</div>
+          <Content listOfPizzas={listOfPizzas} />
+          <Footer />
         </>
       )}
     </div>

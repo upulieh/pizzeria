@@ -1,6 +1,11 @@
 import "./App.css";
+
 import { useState, useEffect } from "react"; //useState hook
 import Axios from "axios";
+
+// import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+// import Sidebar from "./components/Sidebar";
 
 const baseURL = "http://localhost:3001"; //move to .env
 
@@ -18,18 +23,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="pizzasDisplay">
-        {listOfPizzas.map((pizza) => {
-          return (
-            <div>
-              <h1>Pizza type: {pizza.pizzatype}</h1>
-              <h1>Small: {pizza.sprice}</h1>
-              <h1>Medium: {pizza.mprice}</h1>
-              <h1>Large: {pizza.lprice}</h1>
-            </div>
-          );
-        })}
-      </div>
+      {/* <Navbar />
+      <Sidebar /> */}
+      <Home listOfPizzas={listOfPizzas} />
       <div>{/* <input type="text" placeholder="Name..."/> */}</div>
     </div>
   );

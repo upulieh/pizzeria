@@ -1,16 +1,19 @@
-import { Card, Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 const Pizza = (props) => {
+  const pizza = props.pizza;
   const pizzatype = props.pizza.pizzatype;
   const pizzaid = props.pizza.pizzaid;
   const sprice = props.pizza.sprice;
   const mprice = props.pizza.mprice;
   const lprice = props.pizza.lprice;
   const imageurl = props.pizza.imageurl;
+  const onAdd = props.onAdd;
 
-  const handleClick = (pizzaid, price, e) => {
-    console.log(`Add ${pizzaid} of price ${price}`, e.target);
-  };
+  // const handleClick = (pizzaid, price, e) => {
+  //   console.log(`Add ${pizzaid} of price ${price}`, e.target);
+  // };
 
   return (
     <Card className="pizza" key={pizzaid}>
@@ -23,7 +26,7 @@ const Pizza = (props) => {
         <Card.Text className="pizzaprice">
           Starting from <b>${sprice}</b>
         </Card.Text>
-        <Button variant="primary" onClick={(e) => handleClick("M100", "10", e)}>
+        <Button variant="primary" onClick={() => onAdd(pizza)}>
           Add to cart
         </Button>
       </Card.Body>

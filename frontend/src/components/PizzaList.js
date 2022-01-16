@@ -1,13 +1,21 @@
 import Pizza from "./Pizza";
+import { Container, Row, Col } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const PizzaList = (props) => {
   const listOfPizzas = props.listOfPizzas;
   return (
-    <div className="pizza-list">
-      {listOfPizzas.map((pizza) => {
-        return <Pizza pizza={pizza} />;
-      })}
-    </div>
+    <Container>
+      <Row>
+        {listOfPizzas.map((pizza) => {
+          return (
+            <Col>
+              <Pizza pizza={pizza} />
+            </Col>
+          );
+        })}
+      </Row>
+    </Container>
   );
 };
 

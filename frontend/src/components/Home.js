@@ -4,7 +4,7 @@ const Home = (props) => {
   const listOfPizzas = props.listOfPizzas;
   return (
     <div className="home">
-      <h2>HomePage</h2>
+      <h2>Checkout our Pizzas</h2>
       <PizzaList listOfPizzas={listOfPizzas} />
     </div>
   );

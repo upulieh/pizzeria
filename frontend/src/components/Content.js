@@ -3,10 +3,21 @@ import Sidebar from "./Sidebar";
 
 const Content = (props) => {
   const listOfPizzas = props.listOfPizzas;
+  const cartItems = props.cartItems;
+  const onAdd = props.onAdd;
+  const onRemove = props.onRemove;
   return (
     <div className="content">
-      <Home listOfPizzas={listOfPizzas} />
-      {/* <Sidebar /> */}
+      <div className="row">
+        <Home
+          listOfPizzas={listOfPizzas}
+          onAdd={onAdd}
+          cartEmpty={cartItems.length === 0}
+        />
+        {cartItems.length !== 0 && (
+          <Sidebar cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
+        )}
+      </div>
     </div>
   );
 };

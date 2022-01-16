@@ -4,13 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const PizzaList = (props) => {
   const listOfPizzas = props.listOfPizzas;
+  const onAdd = props.onAdd;
   return (
     <Container>
       <Row>
         {listOfPizzas.map((pizza) => {
           return (
-            <Col>
-              <Pizza pizza={pizza} />
+            <Col key={pizza.pizzaid}>
+              <Pizza pizza={pizza} onAdd={onAdd}/>
             </Col>
           );
         })}

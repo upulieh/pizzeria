@@ -20,6 +20,7 @@ const Sidebar = (props) => {
 
   const onCheckout = (e) => {
     console.log(e);
+    alert("Implement Checkout"); //a form name, address,email, phone -> button(Finalize checkout)-> Redirected to paypal payment gateway -> make payment -> use email(send a confirmation) ->
   };
 
   return (

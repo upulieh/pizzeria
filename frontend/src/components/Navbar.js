@@ -1,15 +1,13 @@
 import Cart from "./Cart";
 
 const Navbar = (props) => {
-  const cartItems = props.cartItems;
+  const cartItemCount = props.cartItemCount;
 
   return (
     <nav className="navbar">
       <h1>The Pizza Site</h1>
       <div className="links">
-        <a href="/">
-          <Cart cartItems={cartItems} />
-        </a>
+        <Cart cartItemCount={cartItemCount} />
         <a href="/signin">Signin</a>
       </div>
     </nav>

@@ -1,16 +1,20 @@
+import { IconContext } from "react-icons";
+import { ImCart } from "react-icons/im";
+
 const Cart = (props) => {
-  const cartItems = props.cartItems;
+  const cartItemCount = props.cartItemCount;
 
   return (
-    <div>
-      {cartItems.length === 0 ? (
-        <div>
-          <p>empty</p>
+    <>
+      {cartItemCount ? (
+        <div className="cartItemCount">
+          <ImCart />
+          <p>{cartItemCount}</p>
         </div>
       ) : (
-        <div>{cartItems.length}</div>
+        ""
       )}
-    </div>
+    </>
   );
 };
 

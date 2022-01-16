@@ -71,7 +71,7 @@ function App() {
       ) : (
         <>
           {/* remove this prop cartItems from Navbar after checking */}
-          <Navbar cartItems={cartItems} />
+          <Navbar cartItemCount={cartItems.length} />
           <Content
             listOfPizzas={listOfPizzas}
             cartItems={cartItems}

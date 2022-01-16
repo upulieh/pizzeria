@@ -4,7 +4,6 @@ import Axios from "axios";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Content from "./components/Content";
 
 const baseURL = "http://localhost:3001"; //move to .env
@@ -38,7 +37,6 @@ function App() {
         <>
           <Navbar />
           <Content listOfPizzas={listOfPizzas} />
-          <Footer />
         </>
       )}
     </div>

@@ -16,17 +16,49 @@ const OrdersSchema = new monggose.Schema({
   },
   pizzalist: [
     {
-      pizzatype: {
-        type: monggose.Schema.Types.ObjectId,
-        ref: "pizzas",
+      category: {
+        type: String,
+        enum: ["classic", "signature", "supreme"],
+        required: true,
       },
-      pizzacount: Number,
-      pizzasize: { String, enum: ["Small", "Medium", "Large"] },
+      imageurl: {
+        type: String,
+        required: false,
+      },
+      sprice: {
+        type: Number,
+      },
+      mprice: {
+        type: Number,
+      },
+      lprice: {
+        type: Number,
+      },
+      pizzaid: {
+        type: String,
+        required: true,
+      },
+      pizzatype: {
+        type: String,
+        required: true,
+      },
+      qty: {
+        type: Number,
+        required: true,
+      },
+      pizzasize: {
+        type: String,
+        enum: ["Small", "Medium", "Large"],
+        default: "Small",
+      },
     },
   ],
   ordercount: {
     type: Number,
     default: 1,
+  },
+  total: {
+    type: Number,
   },
 });
 

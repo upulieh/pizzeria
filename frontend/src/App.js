@@ -47,9 +47,6 @@ function App() {
     }
   };
 
-  //useEffect hooks run immediately when a website is loaded
-  // this is where backend api call is made
-  // where axios is used
   useEffect(() => {
     Axios.get(`${baseURL}/getPizzas`).then((res) => {
       setListOfPizzas(res.data);

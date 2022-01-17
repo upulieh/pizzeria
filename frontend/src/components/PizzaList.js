@@ -12,17 +12,13 @@ const PizzaList = (props) => {
   const [supreme, setSupreme] = useState([]);
   const [signature, setSignature] = useState([]);
 
-  function categorizeType() {
+  useEffect(() => {
     setClassic(listOfPizzas.filter((item) => item.category === categories[0]));
     setSupreme(listOfPizzas.filter((item) => item.category === categories[1]));
     setSignature(
       listOfPizzas.filter((item) => item.category === categories[2])
     );
-  }
-
-  useEffect(() => {
-    categorizeType();
-  }, [listOfPizzas]);
+  }, [listOfPizzas]); //checkout the warning
 
   return (
     <>

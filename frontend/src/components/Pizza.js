@@ -6,8 +6,8 @@ const Pizza = (props) => {
   const pizzatype = props.pizza.pizzatype;
   const pizzaid = props.pizza.pizzaid;
   const sprice = props.pizza.sprice;
-  const mprice = props.pizza.mprice;
-  const lprice = props.pizza.lprice;
+  // const mprice = props.pizza.mprice;
+  // const lprice = props.pizza.lprice;
   const imageurl = props.pizza.imageurl;
   const onAdd = props.onAdd;
 

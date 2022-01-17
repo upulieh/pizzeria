@@ -34,6 +34,7 @@
 .navbar .cartItemCount {
   display: flex;
   align-items: flex-end;
+  margin: -12px 0 0 0px;
 }
 .navbar .cartItemCount p {
   background-color: rgb(230, 46, 46);

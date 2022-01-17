@@ -7,7 +7,9 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar">
-      <h1>The Pizza Site</h1>
+      <Link to="/">
+        <h1>The Pizza Site</h1>
+      </Link>
       <div className="links">
         <Link to="/checkout">
           <Cart cartItemCount={cartItemCount} />

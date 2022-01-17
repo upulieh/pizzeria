@@ -42,7 +42,7 @@
   padding: 0 5px;
   margin-bottom: 0.7rem;
 }
-.content {
+.page-size {
   max-width: 1024px;
   margin: 0 auto;
 }
@@ -165,6 +165,9 @@
 }
 .sidebar p {
   font-size: 9pt;
+}
+.sidebar .checkout-button {
+  padding: 10px;
 }
 /* footer */
 .footer {

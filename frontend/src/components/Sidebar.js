@@ -28,10 +28,9 @@ const Sidebar = (props) => {
     // make payment ->
     // use email(send a confirmation) ->
 
-    //randomize orderid,customer
+    //customer should be username of user
     console.log(cartItems);
     Axios.post(`${baseURL}/createOrder`, {
-      orderid: "0104",
       customer: "C0000",
       pizzalist: cartItems,
       // ordercount: 1, //future implementation - if multiple orders
@@ -84,14 +83,16 @@ const Sidebar = (props) => {
               <b>${(pizzaPrice * bonusPercentage).toFixed(2)}</b>
             </div>
           </div>
-          <Button
-            onClick={() => {
-              onCheckout();
-            }}
-            variant="primary checkout"
-          >
-            Checkout
-          </Button>
+          <div className="row checkout-button">
+            <Button
+              onClick={() => {
+                onCheckout();
+              }}
+              variant="primary checkout"
+            >
+              Checkout
+            </Button>
+          </div>
         </>
       )}
     </div>

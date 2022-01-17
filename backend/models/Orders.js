@@ -2,10 +2,6 @@
 const monggose = require("mongoose");
 
 const OrdersSchema = new monggose.Schema({
-  orderid: {
-    type: String,
-    unique: true,
-  },
   timestamp: {
     type: Date,
     default: Date.now,

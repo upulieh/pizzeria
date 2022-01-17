@@ -1,6 +1,6 @@
 const SignIn = () => {
   return (
-    <div>
+    <div className="page-size">
       <input type="text" placeholder="username" />
       <input type="password" placeholder="password" />
       <button>SignIn</button>

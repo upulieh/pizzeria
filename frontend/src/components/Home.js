@@ -7,7 +7,6 @@ const Home = (props) => {
 
   return (
     <>
-      {/* even if cart is empty or not, close sidebar when size below 768px */}
       <div className={cartEmpty ? "block col-12 home" : "block col-9 home"}>
         <PizzaList listOfPizzas={listOfPizzas} onAdd={onAdd} />
       </div>

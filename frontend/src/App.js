@@ -4,14 +4,12 @@ import Orders from "./pages/Orders";
 import SignIn from "./pages/SignIn";
 import ErrorPage from "./pages/ErrorPage";
 
-import { useState, useEffect } from "react"; //useState hook
+import { useState, useEffect } from "react";
 import Axios from "axios";
 
 import Navbar from "./components/Navbar";
 import Content from "./components/Content";
 import "./App.css";
-
-const baseURL = "http://localhost:3001"; //move to .env
 
 // after authentication remove Main from /
 function App() {
@@ -52,7 +50,7 @@ function App() {
   };
 
   useEffect(() => {
-    Axios.get(`${baseURL}/getPizzas`).then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASEURL}/getPizzas`).then((res) => {
       setListOfPizzas(res.data);
     });
 

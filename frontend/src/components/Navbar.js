@@ -14,7 +14,7 @@ const Navbar = (props) => {
         <Link to="/checkout">
           <Cart cartItemCount={cartItemCount} />
         </Link>
-        <Link to="/getOrders">ORDERS</Link>
+        <Link to="/orders">ORDERS</Link>
         <Link to="/signin">
           <GrLogin />
         </Link>

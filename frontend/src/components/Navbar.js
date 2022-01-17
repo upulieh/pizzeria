@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import { GrLogin } from "react-icons/gr";
 
@@ -8,11 +9,13 @@ const Navbar = (props) => {
     <nav className="navbar">
       <h1>The Pizza Site</h1>
       <div className="links">
-        <Cart cartItemCount={cartItemCount} />
-        <a href="/getOrders">ORDERS</a>
-        <a href="/signin">
+        <Link to="/checkout">
+          <Cart cartItemCount={cartItemCount} />
+        </Link>
+        <Link to="/getOrders">ORDERS</Link>
+        <Link to="/signin">
           <GrLogin />
-        </a>
+        </Link>
       </div>
     </nav>
   );

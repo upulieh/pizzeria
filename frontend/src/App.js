@@ -1,21 +1,24 @@
-import { useState, useEffect } from "react"; //useState hook
-import Axios from "axios";
-// import { SpinnerCircular } from "spinners-react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Checkout from "./pages/Checkout";
+import Orders from "./pages/Orders";
+import SignIn from "./pages/SignIn";
+import ErrorPage from "./pages/ErrorPage";
 
-import "./App.css";
+import { useState, useEffect } from "react";
+import Axios from "axios";
+
 import Navbar from "./components/Navbar";
 import Content from "./components/Content";
+import "./App.css";
 
-const baseURL = "http://localhost:3001"; //move to .env
-
+// after authentication remove Main from /
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); //use this for something?
   const [listOfPizzas, setListOfPizzas] = useState([]);
   const [cartItems, setCartItems] = useState([]); //initially cart items is empty
 
   //adding to cart event handler
   const onAdd = (pizza) => {
-    console.log("on add");
     const exist = cartItems.find((x) => x.pizzaid === pizza.pizzaid); //check if pizzaid is already in the list
     //if already available, then increase quantity
     if (exist) {
@@ -32,7 +35,6 @@ function App() {
   };
 
   const onRemove = (pizza) => {
-    console.log("on remove");
     const exist = cartItems.find((x) => x.pizzaid === pizza.pizzaid); //check if pizzaid is already in the list
     if (exist.qty === 1) {
       //removing from cart
@@ -47,13 +49,10 @@ function App() {
     }
   };
 
-  //useEffect hooks run immediately when a website is loaded
-  // this is where backend api call is made
-  // where axios is used
   useEffect(() => {
-    Axios.get(`${baseURL}/getPizzas`).then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASEURL}/getPizzas`).then((res) => {
       setListOfPizzas(res.data);
-    }); // get req, then use the promise to retrieve the data
+    });
 
     setLoading(true);
     setTimeout(() => {
@@ -62,25 +61,26 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {loading ? (
-        <div className="text-center">
-          {/* <SpinnerCircular сolor={"#3D2514"} enabled={loading} size={60} /> */}
-          <h2>Loading</h2>
-        </div>
-      ) : (
-        <>
-          {/* remove this prop cartItems from Navbar after checking */}
-          <Navbar cartItemCount={cartItems.length} />
-          <Content
-            listOfPizzas={listOfPizzas}
-            cartItems={cartItems}
-            onAdd={onAdd}
-            onRemove={onRemove}
-          />
-        </>
-      )}
-    </div>
+    <Router>
+      <Navbar cartItemCount={cartItems.length} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Content
+              listOfPizzas={listOfPizzas}
+              cartItems={cartItems}
+              onAdd={onAdd}
+              onRemove={onRemove}
+            />
+          }
+        />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
 }
 

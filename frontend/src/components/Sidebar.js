@@ -1,11 +1,17 @@
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import Axios from "axios";
+// import { useState } from "react";
+
+const baseURL = "http://localhost:3001"; //move to .env
 
 const Sidebar = (props) => {
   const cartItems = props.cartItems;
   const onAdd = props.onAdd;
   const onRemove = props.onRemove;
+  //assuming the pizza is small s.price is used
   const pizzaPrice = cartItems.reduce((a, c) => a + c.sprice * c.qty, 0); //a-acuumulator, c-current item,0 -initial price
+
+  // const [totalPrice, setTotalPrice] = useState(0);
 
   //5% for 50 or more 10% for 100 or more
   let bonusPercentage = 1;
@@ -15,21 +21,32 @@ const Sidebar = (props) => {
     bonusPercentage = 0.95;
   }
 
-  //to rerender a variable use the useState hook
-  // const [total, setTotal] = useState("50");
+  const onCheckout = () => {
+    //a form name, address,email, phone ->
+    // button(Finalize checkout)->
+    // Redirected to paypal payment gateway ->
+    // make payment ->
+    // use email(send a confirmation) ->
 
-  const onCheckout = (e) => {
-    console.log(e);
-    alert("Implement Checkout"); //a form name, address,email, phone -> button(Finalize checkout)-> Redirected to paypal payment gateway -> make payment -> use email(send a confirmation) ->
+    //customer should be username of user
+    console.log(cartItems);
+    Axios.post(`${baseURL}/createOrder`, {
+      customer: "C0000",
+      pizzalist: cartItems,
+      // ordercount: 1, //future implementation - if multiple orders
+      total: (pizzaPrice * bonusPercentage).toFixed(2),
+    })
+      .then((res) => {
+        alert("ORDER ENTERED");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div className="block col-3 sidebar">
-      {cartItems.length === 0 && (
-        <div>
-          <p>empty</p>
-        </div>
-      )}
+      {cartItems.length === 0 && <div>{/* <p>empty</p> */}</div>}
       {cartItems.map((item) => (
         <div key={item.pizzaid} className="row">
           <div className="col-5 sidebarfont">{item.pizzatype}</div>
@@ -66,14 +83,16 @@ const Sidebar = (props) => {
               <b>${(pizzaPrice * bonusPercentage).toFixed(2)}</b>
             </div>
           </div>
-          <Button
-            onClick={() => {
-              onCheckout();
-            }}
-            variant="primary checkout"
-          >
-            Checkout
-          </Button>
+          <div className="row checkout-button">
+            <Button
+              onClick={() => {
+                onCheckout();
+              }}
+              variant="primary checkout"
+            >
+              Checkout
+            </Button>
+          </div>
         </>
       )}
     </div>

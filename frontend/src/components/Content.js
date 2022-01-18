@@ -7,7 +7,7 @@ const Content = (props) => {
   const onAdd = props.onAdd;
   const onRemove = props.onRemove;
   return (
-    <div className="content">
+    <div className="page-size">
       <div className="row">
         <Home
           listOfPizzas={listOfPizzas}

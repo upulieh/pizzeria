@@ -1,6 +1,11 @@
 Uses Node.js, Express.js and MongoDB
 
-Express 4.17.2- framework used to build the API
-mongoose 6.1.6- used to communicate with mongoDB using node by database actions
-cors 2.8.5 - connecting backend with frontend
-nodemon 2.0.15 - for ease of development
+# Steps to run the project
+
+- Copy and rename the file`.env.example` as `.env`
+- Add the following keys in `.env`
+  - `PORT=3001`
+  - `DB_USERNAME=admin`
+  - `DB_PASSWORD=admin`
+  - `DB_NAME=pizzeria`
+- In the project directory, you can run `npm start`

@@ -7,15 +7,9 @@ const Home = (props) => {
 
   return (
     <>
-      {cartEmpty ? (
-        <div className="block col-12 home">
-          <PizzaList listOfPizzas={listOfPizzas} onAdd={onAdd} />
-        </div>
-      ) : (
-        <div className="block col-9 home">
-          <PizzaList listOfPizzas={listOfPizzas} onAdd={onAdd} />
-        </div>
-      )}
+      <div className={cartEmpty ? "block col-12 home" : "block col-9 home"}>
+        <PizzaList listOfPizzas={listOfPizzas} onAdd={onAdd} />
+      </div>
     </>
   );
 };

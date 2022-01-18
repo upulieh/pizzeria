@@ -21,46 +21,49 @@ const PizzaList = (props) => {
   }, [listOfPizzas]); //checkout the warning
 
   return (
-    <>
+    <div className="container">
       <h5 className="categories">{categories[0].toUpperCase()}</h5>
-      <Container>
-        <Row>
-          {classic.map((pizza) => {
-            return (
-              <Col key={pizza.pizzaid}>
-                <Pizza pizza={pizza} onAdd={onAdd} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <div className="row">
+        {classic.map((pizza) => {
+          return (
+            <div
+              key={pizza.pizzaid}
+              className="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+            >
+              <Pizza pizza={pizza} onAdd={onAdd} />
+            </div>
+          );
+        })}
+      </div>
 
       <h5 className="categories">{categories[1].toUpperCase()}</h5>
-      <Container>
-        <Row>
-          {supreme.map((pizza) => {
-            return (
-              <Col key={pizza.pizzaid}>
-                <Pizza pizza={pizza} onAdd={onAdd} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <div className="row">
+        {supreme.map((pizza) => {
+          return (
+            <div
+              key={pizza.pizzaid}
+              className="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+            >
+              <Pizza pizza={pizza} onAdd={onAdd} />
+            </div>
+          );
+        })}
+      </div>
 
       <h5 className="categories">{categories[2].toUpperCase()}</h5>
-      <Container>
-        <Row>
-          {signature.map((pizza) => {
-            return (
-              <Col key={pizza.pizzaid}>
-                <Pizza pizza={pizza} onAdd={onAdd} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
-    </>
+      <div className="row">
+        {signature.map((pizza) => {
+          return (
+            <div
+              key={pizza.pizzaid}
+              className="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+            >
+              <Pizza pizza={pizza} onAdd={onAdd} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

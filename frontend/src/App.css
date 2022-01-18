@@ -179,33 +179,36 @@
   width: 100%;
   text-align: center;
 }
-/* orders */
-.orders {
-  padding: 1rem 2rem;
-}
-.orders table {
-  border-spacing: 0;
-  border: 1px solid black;
+/* order card */
+.order {
+  padding: 10px;
+  margin: 10px auto;
   width: 100%;
 }
-@media (max-width: 768px) {
-  .orders {
-    overflow-x: auto;
-  }
-  .orders table {
-  }
+.order .card-body {
+  padding: 0;
 }
-.orders table tr:last-child td {
-  border-bottom: 0;
+.order:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
-.orders table th,
-td {
-  margin: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+.pizzaitem {
+  padding: 10px 0;
 }
-.orders table th,
-td :last-child {
-  border-right: 0;
+.pizzaitem img {
+  height: 95px !important;
+  object-fit: contain;
+}
+.order .prices {
+  text-align: start;
+  padding: 0 0 0 10px;
+}
+.order .individual-prices {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+.order .final-price {
+  font-size: 15pt;
+}
+.order .date {
+  text-align: end;
+  font-size: 9pt;
 }

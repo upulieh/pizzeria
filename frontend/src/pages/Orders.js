@@ -43,12 +43,12 @@ const Orders = () => {
             },
           },
           {
-            Header: "Timestamp",
+            Header: "Purchase Date",
             accessor: "timestamp",
             Cell: ({ cell: { value } }) => {
               return typeof value == "undefined"
                 ? ``
-                : `${value.split("T")[0]} ${value.split("T")[1].split(".")[0]}`;
+                : `${value.split("T")[0]}`;
             },
           },
         ],
@@ -73,15 +73,15 @@ const Orders = () => {
             accessor: "pizzasize",
           },
           {
+            Header: "Qty",
+            accessor: "qty",
+          },
+          {
             Header: "Price",
             accessor: "sprice",
             Cell: ({ cell: { value } }) => {
               return typeof value == "undefined" ? `` : `$${value}.00`;
             },
-          },
-          {
-            Header: "Qty",
-            accessor: "qty",
           },
         ],
       },

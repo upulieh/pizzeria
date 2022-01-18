@@ -1,125 +1,98 @@
 import { useState, useEffect, useMemo } from "react";
 import { useTable } from "react-table";
 import Axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import Table from "./Table";
 
 const Orders = () => {
   const [listOfOrders, setListOfOrders] = useState([]);
 
+  //table data for react-table
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_BASEURL}/getOrders`).then((res) => {
       setListOfOrders(res.data);
     });
   }, []);
 
-  //table columns for react-table
   const columns = useMemo(
     () => [
       {
-        Header: "Column 1",
-        accessor: "col1", // accessor is the "key" in the data
+        id: "expander", // Make sure it has an ID
+        Cell: ({ row }) =>
+          // Use the row.canExpand and row.getToggleRowExpandedProps prop getter to build the toggle for expanding a row
+          row.canExpand ? (
+            <span
+              {...row.getToggleRowExpandedProps({
+                style: {
+                  paddingLeft: `${row.depth * 2}rem`,
+                },
+              })}
+            >
+              {row.isExpanded ? "▼" : "►"}
+            </span>
+          ) : null,
       },
       {
-        Header: "Column 2",
-        accessor: "col2",
+        Header: "Order",
+        columns: [
+          {
+            Header: "Total",
+            accessor: "total",
+            // Cell method will provide the value of the cell; we can create a custom element for the Cell
+            Cell: ({ cell: { value } }) => {
+              return typeof value == "undefined" ? `` : `$${value}.00`;
+            },
+          },
+          {
+            Header: "Timestamp",
+            accessor: "timestamp",
+            Cell: ({ cell: { value } }) => {
+              return typeof value == "undefined"
+                ? ``
+                : `${value.split("T")[0]} ${value.split("T")[1].split(".")[0]}`;
+            },
+          },
+        ],
+      },
+      {
+        Header: "Pizza",
+        columns: [
+          {
+            Header: "Name",
+            accessor: "pizzatype",
+          },
+          {
+            Header: "Code",
+            accessor: "pizzaid",
+          },
+          {
+            Header: "Category",
+            accessor: "category",
+          },
+          {
+            Header: "Size",
+            accessor: "pizzasize",
+          },
+          {
+            Header: "Price",
+            accessor: "sprice",
+            Cell: ({ cell: { value } }) => {
+              return typeof value == "undefined" ? `` : `$${value}.00`;
+            },
+          },
+          {
+            Header: "Qty",
+            accessor: "qty",
+          },
+        ],
       },
     ],
     []
   );
-  const data = useMemo(
-    () => [
-      {
-        col1: "Hello",
-        col2: "World",
-      },
-      {
-        col1: "react-table",
-        col2: "rocks",
-      },
-      {
-        col1: "whatever",
-        col2: "you want",
-      },
-    ],
-    []
-  );
-
-  const tableInstance = useTable({ columns, data });
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
 
   return (
-    // <Container className="page-size">
-    //   {listOfOrders.map((order) => (
-    //     <div key={order._id}>
-    //       {order.pizzalist.map((pizza) => (
-    //         <div key={pizza.pizzaid}>
-    //           {pizza.pizzaid}
-    //           {pizza.category}
-    //           {pizza.pizzatype}
-    //           {pizza.qty}
-    //         </div>
-    //       ))}
-    //       <div>Total ${order.total}</div>
-    //     </div>
-    //   ))}
-    // </Container>
-
-    // apply the table props
-    <table {...getTableProps()}>
-      <thead>
-        {
-          // Loop over the header rows
-          headerGroups.map((headerGroup) => (
-            // Apply the header row props
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {
-                // Loop over the headers in each row
-                headerGroup.headers.map((column) => (
-                  // Apply the header cell props
-                  <th {...column.getHeaderProps()}>
-                    {
-                      // Render the header
-                      column.render("Header")
-                    }
-                  </th>
-                ))
-              }
-            </tr>
-          ))
-        }
-      </thead>
-      {/* Apply the table body props */}
-      <tbody {...getTableBodyProps()}>
-        {
-          // Loop over the table rows
-          rows.map((row) => {
-            // Prepare the row for display
-            prepareRow(row);
-            return (
-              // Apply the row props
-              <tr {...row.getRowProps()}>
-                {
-                  // Loop over the rows cells
-                  row.cells.map((cell) => {
-                    // Apply the cell props
-                    return (
-                      <td {...cell.getCellProps()}>
-                        {
-                          // Render the cell contents
-                          cell.render("Cell")
-                        }
-                      </td>
-                    );
-                  })
-                }
-              </tr>
-            );
-          })
-        }
-      </tbody>
-    </table>
+    <div className="page-size">
+      <Table className="page-size" columns={columns} data={listOfOrders} />
+    </div>
   );
 };
 

@@ -179,3 +179,33 @@
   width: 100%;
   text-align: center;
 }
+/* orders */
+.orders {
+  padding: 1rem 2rem;
+}
+.orders table {
+  border-spacing: 0;
+  border: 1px solid black;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .orders {
+    overflow-x: auto;
+  }
+  .orders table {
+  }
+}
+.orders table tr:last-child td {
+  border-bottom: 0;
+}
+.orders table th,
+td {
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+.orders table th,
+td :last-child {
+  border-right: 0;
+}

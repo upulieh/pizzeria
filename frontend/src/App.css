@@ -23,7 +23,6 @@
   display: flex;
 }
 .navbar a {
-  margin-left: 16px;
   text-decoration: none;
   padding: 6px;
   color: #f1356d;
@@ -91,7 +90,6 @@
 .pizza {
   padding: 10px;
   margin: 13px auto;
-  /* background-color: rgb(150, 170, 174);  */
   width: 180px;
   height: 336px;
 }
@@ -102,7 +100,6 @@
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 .photo {
-  /* width: 200px; */
   height: 160px;
   object-fit: cover;
 }
@@ -178,4 +175,76 @@
   position: fixed;
   width: 100%;
   text-align: center;
+}
+/* order card */
+.order {
+  padding: 10px;
+  margin: 10px auto;
+  width: 100%;
+}
+.order .card-body {
+  padding: 0;
+}
+.order:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.pizzaitem {
+  padding: 10px 0;
+  border-bottom: 1px rgb(214, 211, 211) solid;
+}
+.pizzaitem img {
+  height: 95px !important;
+  object-fit: contain;
+}
+.order .prices {
+  text-align: start;
+  padding: 0 0 0 10px;
+}
+.order .individual-prices {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+.order .final-price {
+  font-size: 15pt;
+  width: fit-content;
+  border-top: 1px black solid;
+}
+.order .date {
+  text-align: end;
+  font-size: 9pt;
+}
+@media (max-width: 767px) {
+  .order-text .prices {
+    font-size: 9pt;
+  }
+  .pizzaitem {
+    padding: 5px 20px;
+  }
+  .pizzaitem img {
+    height: 60px !important;
+  }
+  .final-price {
+    float: right;
+  }
+  .order .date {
+    padding: 0 100px 0 0;
+  }
+}
+@media (max-width: 478px) {
+  .order-text {
+    font-size: 8pt;
+  }
+  .prices,
+  .final-price {
+    font-size: 10pt !important;
+  }
+  .pizzaitem img {
+    height: 0px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .prices,
+  .final-price {
+    font-size: 9pt !important;
+  }
 }

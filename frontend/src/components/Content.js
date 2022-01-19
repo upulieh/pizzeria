@@ -6,8 +6,9 @@ const Content = (props) => {
   const cartItems = props.cartItems;
   const onAdd = props.onAdd;
   const onRemove = props.onRemove;
+
   return (
-    <div className="page-size">
+    <div className="page-size container">
       <div className="row">
         <Home
           listOfPizzas={listOfPizzas}

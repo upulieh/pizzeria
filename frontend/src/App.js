@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Checkout from "./pages/Checkout";
-import Orders from "./pages/Orders";
-import SignIn from "./pages/SignIn";
+import CheckoutPage from "./pages/CheckoutPage";
+import OrdersPage from "./pages/OrdersPage";
+import SignInPage from "./pages/SignInPage";
 import ErrorPage from "./pages/ErrorPage";
 
 import { useState, useEffect } from "react";
@@ -13,39 +13,42 @@ import "./App.css";
 
 // after authentication remove Main from /
 function App() {
-  const [loading, setLoading] = useState(false); //use this for something?
   const [listOfPizzas, setListOfPizzas] = useState([]);
-  const [cartItems, setCartItems] = useState([]); //initially cart items is empty
+  const [cartItems, setCartItems] = useState([]);
 
-  //adding to cart event handler
   const onAdd = (pizza) => {
-    const exist = cartItems.find((x) => x.pizzaid === pizza.pizzaid); //check if pizzaid is already in the list
-    //if already available, then increase quantity
-    if (exist) {
-      //only update the particular pizza's quantity (else keep as it is)
-      setCartItems(
-        cartItems.map((x) =>
-          x.pizzaid === pizza.pizzaid ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      //if pizza does not exist in the cart (add it) ([...cartItems] is for array concat)
+    let exist = false;
+    let arr = cartItems;
+
+    arr = arr.map((x) => {
+      let val = x;
+      if (x.pizzaid === pizza.pizzaid) {
+        exist = true; //if found inside cart
+        val = { ...x, qty: x.qty + 1 };
+      }
+      return val;
+    });
+    setCartItems(arr);
+    if (!exist) {
       setCartItems([...cartItems, { ...pizza, qty: 1 }]);
     }
   };
 
   const onRemove = (pizza) => {
-    const exist = cartItems.find((x) => x.pizzaid === pizza.pizzaid); //check if pizzaid is already in the list
-    if (exist.qty === 1) {
-      //removing from cart
-      setCartItems(cartItems.filter((x) => x.pizzaid !== pizza.pizzaid));
-    } else {
-      //reduce qty
-      setCartItems(
-        cartItems.map((x) =>
-          x.pizzaid === pizza.pizzaid ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
+    let qtyOne = true;
+    let arr = cartItems;
+
+    arr = arr.map((x) => {
+      let val = x;
+      if (pizza.pizzaid === x.pizzaid && x.qty > 1) {
+        qtyOne = false; //if found inside cart
+        val = { ...x, qty: x.qty - 1 };
+      }
+      return val;
+    });
+    setCartItems(arr);
+    if (qtyOne) {
+      setCartItems(arr.filter((x) => x.pizzaid !== pizza.pizzaid));
     }
   };
 
@@ -53,11 +56,7 @@ function App() {
     Axios.get(`${process.env.REACT_APP_BASEURL}/getPizzas`).then((res) => {
       setListOfPizzas(res.data);
     });
-
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 20);
+    setTimeout(() => {}, 1000);
   }, []);
 
   return (
@@ -75,9 +74,9 @@ function App() {
             />
           }
         />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/orders" element={<Orders />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/orders" element={<OrdersPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

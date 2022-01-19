@@ -1,5 +1,4 @@
 import Pizza from "./Pizza";
-import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 

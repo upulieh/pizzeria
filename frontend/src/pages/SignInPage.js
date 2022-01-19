@@ -1,4 +1,4 @@
-const SignIn = () => {
+const SignInPage = () => {
   return (
     <div className="page-size">
       <input type="text" placeholder="username" />
@@ -8,4 +8,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInPage;

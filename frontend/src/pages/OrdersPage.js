@@ -7,7 +7,7 @@ const OrdersPage = () => {
 
   useEffect(() => {
     Axios.get(
-      `${process.env.REACT_APP_BASE_URL || `http://localhost:3001`}/getOrders`
+      `${process.env.REACT_APP_BASE_URL || `http://localhost:5000`}/getOrders`
     ).then((res) => {
       setListOfOrders(res.data);
     });

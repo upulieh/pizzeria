@@ -55,7 +55,7 @@ function App() {
 
   useEffect(() => {
     Axios.get(
-      `${process.env.REACT_APP_BASE_URL || `http://localhost:3001`}/getPizzas`
+      `${process.env.REACT_APP_BASE_URL || `http://localhost:5000`}/getPizzas`
     ).then((res) => {
       setListOfPizzas(res.data);
     });

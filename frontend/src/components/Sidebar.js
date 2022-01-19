@@ -20,7 +20,7 @@ const Sidebar = (props) => {
     //customer should be username of user (obtained with authentication)
     Axios.post(
       `${
-        process.env.REACT_APP_BASE_URL || `http://localhost:3001`
+        process.env.REACT_APP_BASE_URL || `http://localhost:5000`
       }/createOrder`,
       {
         customer: "C0000",

@@ -6,6 +6,7 @@ const mongoose = require("mongoose"); //sets mongodb connection
 const OrderModel = require("./models/Orders");
 const PizzaModel = require("./models/Pizzas");
 const PORT = process.env.PORT || 8080;
+const URI = `mongodb+srv://admin:admin@cluster0.vdolv.mongodb.net/sample_mflix?retryWrites=true&w=majority`;
 
 const cors = require("cors");
 
@@ -13,10 +14,7 @@ app.use(express.json()); //for parsing req
 app.use(cors());
 
 mongoose
-  .connect(
-    process.env.MONGODB_URI ||
-      `mongodb+srv://admin:admin@cluster0.vdolv.mongodb.net/pizzeria?retryWrites=true&w=majority`
-  )
+  .connect(process.env.MONGODB_URI || URI)
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
 

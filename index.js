@@ -11,10 +11,13 @@ const cors = require("cors");
 app.use(express.json()); //for parsing req
 app.use(cors());
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vdolv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
-);
+mongoose
+  .connect(
+    process.env.MONGODB_URI ||
+      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vdolv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+  )
+  .then(() => console.log("MongoDB connected..."))
+  .catch((err) => console.log(err));
 
 app.get("/getPizzas", (req, res) => {
   PizzaModel.find({}, (error, result) => {
@@ -47,9 +50,9 @@ app.post("/createOrder", async (req, res) => {
 });
 
 //for heroku deployment
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("frontend/build"));
+// }
 
 app.listen(process.env.PORT, () => {
   console.log(`SERVER IS RUNNING! on ${process.env.PORT}`);

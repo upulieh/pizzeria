@@ -5,8 +5,7 @@ import { useState, useEffect } from "react";
 const PizzaList = (props) => {
   const listOfPizzas = props.listOfPizzas;
   const onAdd = props.onAdd;
-  const categories = ["classic", "supreme", "signature"]; //try thiis
-
+  const categories = ["classic", "supreme", "signature"];
   const [classic, setClassic] = useState([]);
   const [supreme, setSupreme] = useState([]);
   const [signature, setSignature] = useState([]);
@@ -17,7 +16,7 @@ const PizzaList = (props) => {
     setSignature(
       listOfPizzas.filter((item) => item.category === categories[2])
     );
-  }, [listOfPizzas]); //checkout the warning
+  }, [listOfPizzas]); 
 
   return (
     <div className="container">

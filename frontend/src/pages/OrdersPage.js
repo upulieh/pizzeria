@@ -6,7 +6,7 @@ const OrdersPage = () => {
   const [listOfOrders, setListOfOrders] = useState([]);
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BASEURL}/getOrders`).then((res) => {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/getOrders`).then((res) => {
       setListOfOrders(res.data);
     });
   }, []);

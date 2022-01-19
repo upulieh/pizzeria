@@ -6,14 +6,8 @@ const Pizza = (props) => {
   const pizzatype = props.pizza.pizzatype;
   const pizzaid = props.pizza.pizzaid;
   const sprice = props.pizza.sprice;
-  // const mprice = props.pizza.mprice;
-  // const lprice = props.pizza.lprice;
   const imageurl = props.pizza.imageurl;
   const onAdd = props.onAdd;
-
-  // const handleClick = (pizzaid, price, e) => {
-  //   console.log(`Add ${pizzaid} of price ${price}`, e.target);
-  // };
 
   return (
     <Card className="pizza" key={pizzaid}>

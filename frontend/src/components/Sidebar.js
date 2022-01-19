@@ -1,8 +1,5 @@
 import Button from "react-bootstrap/Button";
 import Axios from "axios";
-// import { useState } from "react";
-
-const baseURL = "http://localhost:3001"; //move to .env
 
 const Sidebar = (props) => {
   const cartItems = props.cartItems;
@@ -10,8 +7,6 @@ const Sidebar = (props) => {
   const onRemove = props.onRemove;
   //assuming the pizza is small s.price is used
   const pizzaPrice = cartItems.reduce((a, c) => a + c.sprice * c.qty, 0); //a-acuumulator, c-current item,0 -initial price
-
-  // const [totalPrice, setTotalPrice] = useState(0);
 
   //5% for 50 or more 10% for 100 or more
   let bonusPercentage = 1;
@@ -22,18 +17,11 @@ const Sidebar = (props) => {
   }
 
   const onCheckout = () => {
-    //a form name, address,email, phone ->
-    // button(Finalize checkout)->
-    // Redirected to paypal payment gateway ->
-    // make payment ->
-    // use email(send a confirmation) ->
-
-    //customer should be username of user
+    //customer should be username of user (obtained with authentication)
     console.log(cartItems);
-    Axios.post(`${baseURL}/createOrder`, {
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/createOrder`, {
       customer: "C0000",
       pizzalist: cartItems,
-      // ordercount: 1, //future implementation - if multiple orders
       total: (pizzaPrice * bonusPercentage).toFixed(2),
     })
       .then((res) => {

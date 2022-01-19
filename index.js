@@ -49,11 +49,11 @@ app.post("/createOrder", async (req, res) => {
   res.json(order);
 });
 
-//for heroku deployment
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("frontend/build"));
-// }
+// for heroku deployment
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+}
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log(`SERVER IS RUNNING! on ${process.env.PORT}`);
 }); // start api

@@ -12,7 +12,8 @@ app.use(express.json()); //for parsing req
 app.use(cors());
 
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vdolv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+  process.env.MONGODB_URI ||
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vdolv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
 );
 
 app.get("/getPizzas", (req, res) => {
@@ -34,7 +35,6 @@ app.get("/getOrders", (req, res) => {
     }
   });
 });
-
 
 //this functions must be async since we want to save this in the db
 app.post("/createOrder", async (req, res) => {

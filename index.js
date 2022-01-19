@@ -5,8 +5,10 @@ const app = express(); // used for applying middleware
 const mongoose = require("mongoose"); //sets mongodb connection
 const OrderModel = require("./models/Orders");
 const PizzaModel = require("./models/Pizzas");
-const PORT = process.env.PORT || 8080;
-const URI = `mongodb+srv://admin:admin@cluster0.vdolv.mongodb.net/sample_mflix?retryWrites=true&w=majority`;
+const PORT = 5000 || process.env.PORT;
+const MONGODB_URI =
+  `mongodb+srv://admin:admin@cluster0.vdolv.mongodb.net/pizzeria?retryWrites=true&w=majority` ||
+  process.env.MONGODB_URI;
 
 const cors = require("cors");
 
@@ -14,7 +16,7 @@ app.use(express.json()); //for parsing req
 app.use(cors());
 
 mongoose
-  .connect(process.env.MONGODB_URI || URI)
+  .connect(MONGODB_URI)
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
 

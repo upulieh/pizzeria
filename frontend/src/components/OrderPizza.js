@@ -10,7 +10,7 @@ const OrderPizza = (props) => {
     <div className="row pizzaitem">
       <div className="col-lg-1 col-md-1" />
       <div className="col-lg-2 col-md-2 col-2">
-        <img src={imageurl} />
+        <img src={imageurl} alt={pizzatype} />
       </div>
       <div className="col-lg-2 col-md-2 mt-4 order-text col-3">
         Category {category}

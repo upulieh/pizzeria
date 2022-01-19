@@ -35,6 +35,7 @@ app.get("/getOrders", (req, res) => {
   });
 });
 
+
 //this functions must be async since we want to save this in the db
 app.post("/createOrder", async (req, res) => {
   const order = req.body;

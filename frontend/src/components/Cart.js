@@ -1,4 +1,3 @@
-import { IconContext } from "react-icons";
 import { ImCart } from "react-icons/im";
 
 const Cart = (props) => {

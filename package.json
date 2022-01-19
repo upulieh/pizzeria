@@ -1,6 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "private": true,
   "description": "Uses Node.js, Express.js and MongoDB",
   "repository": {
     "type": "git",
@@ -9,16 +10,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "heroku-postbuild": "npm run install-frontend && npm run build",
+    "install-frontend": "cd frontend && npm install",
+    "build": "cd client && npm run build"
   },
   "keywords": [],
-  "author": "Upulie",
+  "author": "Upulie Han",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^11.0.0",
     "express": "^4.17.2",
-    "mongoose": "^6.1.6",
+    "mongoose": "^6.1.6"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.15"
   }
 }

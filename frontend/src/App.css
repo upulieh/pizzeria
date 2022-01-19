@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap");
+
+/* base styles */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand";
+  color: #333;
+}
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 1024px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color: #f1356d;
+}
+.navbar .links {
+  margin-left: auto;
+  display: flex;
+}
+.navbar a {
+  text-decoration: none;
+  padding: 6px;
+  color: #f1356d;
+}
+.navbar a:hover {
+  color: #f1356d;
+}
+.navbar .cartItemCount {
+  display: flex;
+  align-items: flex-end;
+  margin: -12px 0 0 0px;
+}
+.navbar .cartItemCount p {
+  background-color: rgb(230, 46, 46);
+  font-size: 10pt;
+  padding: 0 5px;
+  margin-bottom: 0.7rem;
+}
+.page-size {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.content .row {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+/* home */
+.home {
+  /* background-color: #c1bfc4; */
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23635a61' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E");
+  padding: 16px 0 0 0;
+}
+@media (max-width: 768px) {
+  .home {
+    width: 100% !important;
+  }
+  .sidebar {
+    display: none;
+  }
+}
+.categories {
+  padding-top: 5px;
+  text-align: center;
+  overflow: hidden;
+}
+.categories:before,
+.categories:after {
+  background-color: #333;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+.categories:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+.categories:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+/* pizza card*/
+.pizza {
+  padding: 10px;
+  margin: 13px auto;
+  width: 180px;
+  height: 336px;
+}
+.pizza .card-body {
+  padding: 0;
+}
+.pizza:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.photo {
+  height: 160px;
+  object-fit: cover;
+}
+.card-title {
+  font-size: 12pt !important;
+  margin: 0.5rem 0;
+}
+.pizzadescription {
+  font-size: 9pt;
+  margin-bottom: 0.3rem;
+}
+.pizzaprice {
+  font-size: 9pt;
+  font-family: "Lucida Sans";
+  text-align: end;
+  margin-bottom: 0.3rem;
+}
+.pizza h2 {
+  font-size: 20px;
+  color: rgb(241, 53, 109);
+  margin-bottom: 8px;
+}
+.pizza button,
+.sidebar button {
+  color: #fff;
+  background-color: rgb(170, 135, 19);
+  border-color: rgb(170, 135, 19);
+  width: 100%;
+}
+.pizza button:hover,
+.sidebar button:hover {
+  background-color: rgba(170, 135, 19, 0.568);
+  border-color: rgba(170, 135, 19, 0.568);
+}
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+  background-color: rgba(170, 135, 19, 0.568);
+  border-color: rgba(170, 135, 19, 0.568);
+  box-shadow: 0 0 0 0.25rem rgb(49 132 253 / 50%);
+}
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show > .btn-primary.dropdown-toggle {
+  background-color: rgba(170, 135, 19, 0.568);
+  border-color: rgba(170, 135, 19, 0.568);
+}
+/* sidebar */
+.sidebar {
+  /* background-color: #c1bfc4; */
+  padding: 60px 0;
+  /* background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23635a61' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E"); */
+}
+.sidebar .row {
+  margin: 8px auto;
+}
+.sidebar .sidebarfont {
+  font-size: 9pt;
+}
+.sidebar p {
+  font-size: 9pt;
+}
+.sidebar .checkout-button {
+  padding: 10px;
+}
+/* footer */
+.footer {
+  padding: 2rem 3rem;
+  background-color: rgb(235, 195, 64);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+/* order card */
+.order {
+  padding: 10px;
+  margin: 10px auto;
+  width: 100%;
+}
+.order .card-body {
+  padding: 0;
+}
+.order:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.pizzaitem {
+  padding: 10px 0;
+  border-bottom: 1px rgb(214, 211, 211) solid;
+}
+.pizzaitem img {
+  height: 95px !important;
+  object-fit: contain;
+}
+.order .prices {
+  text-align: start;
+  padding: 0 0 0 10px;
+}
+.order .individual-prices {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+.order .final-price {
+  font-size: 15pt;
+  width: fit-content;
+  border-top: 1px black solid;
+}
+.order .date {
+  text-align: end;
+  font-size: 9pt;
+}
+@media (max-width: 767px) {
+  .order-text .prices {
+    font-size: 9pt;
+  }
+  .pizzaitem {
+    padding: 5px 20px;
+  }
+  .pizzaitem img {
+    height: 60px !important;
+  }
+  .final-price {
+    float: right;
+  }
+  .order .date {
+    padding: 0 100px 0 0;
+  }
+}
+@media (max-width: 478px) {
+  .order-text {
+    font-size: 8pt;
+  }
+  .prices,
+  .final-price {
+    font-size: 10pt !important;
+  }
+  .pizzaitem img {
+    height: 0px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .prices,
+  .final-price {
+    font-size: 9pt !important;
+  }
+}

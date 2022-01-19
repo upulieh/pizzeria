@@ -10,7 +10,7 @@ import Axios from "axios";
 import Navbar from "./components/Navbar";
 import Content from "./components/Content";
 import "./App.css";
-const REACT_APP_BASE_URL = "http://localhost:5000";
+// const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL || "http://0.0.0.0:3000";
 
 // after authentication remove Main from /
 function App() {
@@ -54,9 +54,7 @@ function App() {
   };
 
   useEffect(() => {
-    Axios.get(
-      `${process.env.REACT_APP_BASE_URL || REACT_APP_BASE_URL}/getPizzas`
-    ).then((res) => {
+    Axios.get(`/getPizzas`).then((res) => {
       setListOfPizzas(res.data);
     });
     setTimeout(() => {}, 1000);

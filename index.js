@@ -5,12 +5,13 @@ const app = express(); // used for applying middleware
 const mongoose = require("mongoose"); //sets mongodb connection
 const OrderModel = require("./models/Orders");
 const PizzaModel = require("./models/Pizzas");
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const MONGODB_URI =
-  `mongodb+srv://admin:admin@cluster0.vdolv.mongodb.net/pizzeria?retryWrites=true&w=majority` ||
-  process.env.MONGODB_URI;
+  process.env.MONGODB_URI ||
+  `mongodb+srv://admin:admin@cluster0.vdolv.mongodb.net/pizzeria?retryWrites=true&w=majority`;
 
 const cors = require("cors");
+const { path } = require("path");
 
 app.use(express.json()); //for parsing req
 app.use(cors());
@@ -53,8 +54,13 @@ app.post("/createOrder", async (req, res) => {
 // for heroku deployment
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
+
+  // if in production, with no requests, lead to index.html
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
 }
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`SERVER IS RUNNING! on ${PORT}`);
 }); // start api

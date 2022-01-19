@@ -18,12 +18,16 @@ const Sidebar = (props) => {
 
   const onCheckout = () => {
     //customer should be username of user (obtained with authentication)
-    console.log(cartItems);
-    Axios.post(`${process.env.REACT_APP_BASE_URL}/createOrder`, {
-      customer: "C0000",
-      pizzalist: cartItems,
-      total: (pizzaPrice * bonusPercentage).toFixed(2),
-    })
+    Axios.post(
+      `${
+        process.env.REACT_APP_BASE_URL || `http://localhost:3001`
+      }/createOrder`,
+      {
+        customer: "C0000",
+        pizzalist: cartItems,
+        total: (pizzaPrice * bonusPercentage).toFixed(2),
+      }
+    )
       .then((res) => {
         alert("ORDER ENTERED");
       })

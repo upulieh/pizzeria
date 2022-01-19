@@ -5,6 +5,7 @@ const app = express(); // used for applying middleware
 const mongoose = require("mongoose"); //sets mongodb connection
 const OrderModel = require("./models/Orders");
 const PizzaModel = require("./models/Pizzas");
+const PORT = proces.env.PORT || 8080;
 
 const cors = require("cors");
 
@@ -14,7 +15,7 @@ app.use(cors());
 mongoose
   .connect(
     process.env.MONGODB_URI ||
-      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vdolv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+      `mongodb+srv://admin:admin@cluster0.vdolv.mongodb.net/pizzeria?retryWrites=true&w=majority`
   )
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
@@ -54,6 +55,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
 }
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log(`SERVER IS RUNNING! on ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`SERVER IS RUNNING! on ${PORT}`);
 }); // start api

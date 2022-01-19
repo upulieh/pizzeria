@@ -10,7 +10,7 @@ import Axios from "axios";
 import Navbar from "./components/Navbar";
 import Content from "./components/Content";
 import "./App.css";
-const PORT=process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
 // after authentication remove Main from /
 function App() {
@@ -54,7 +54,9 @@ function App() {
   };
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/getPizzas`).then((res) => {
+    Axios.get(
+      `${process.env.REACT_APP_BASE_URL || `http://localhost:3001`}/getPizzas`
+    ).then((res) => {
       setListOfPizzas(res.data);
     });
     setTimeout(() => {}, 1000);

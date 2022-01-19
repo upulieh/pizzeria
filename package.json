@@ -14,7 +14,7 @@
     "dev": "nodemon index.js",
     "heroku-postbuild": "npm run install-frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
-    "build": "cd client && npm run build"
+    "build": "cd frontend && npm run build"
   },
   "keywords": [],
   "author": "Upulie Han",

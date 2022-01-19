@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Axios from "axios";
+const REACT_APP_BASE_URL = "http://localhost:5000";
 
 const Sidebar = (props) => {
   const cartItems = props.cartItems;
@@ -19,9 +20,7 @@ const Sidebar = (props) => {
   const onCheckout = () => {
     //customer should be username of user (obtained with authentication)
     Axios.post(
-      `${
-        process.env.REACT_APP_BASE_URL || `http://localhost:5000`
-      }/createOrder`,
+      `${process.env.REACT_APP_BASE_URL || REACT_APP_BASE_URL}/createOrder`,
       {
         customer: "C0000",
         pizzalist: cartItems,

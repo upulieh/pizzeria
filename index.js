@@ -5,7 +5,7 @@ const app = express(); // used for applying middleware
 const mongoose = require("mongoose"); //sets mongodb connection
 const OrderModel = require("./models/Orders");
 const PizzaModel = require("./models/Pizzas");
-const PORT = proces.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 const cors = require("cors");
 

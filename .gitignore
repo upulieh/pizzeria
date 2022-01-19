@@ -11,7 +11,7 @@ node_modules/
 
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-# build/Release
+frontend/build
 
 # Optional npm cache directory
 # .npm
